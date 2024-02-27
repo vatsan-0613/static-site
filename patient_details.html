@@ -66,7 +66,7 @@
 </head>
 
 <body>
-    <button class="btn btn-primary ms-3 logout-btn"><a href="/logout">LOGOUT</a></button>
+    <button class="btn btn-primary ms-3 logout-btn"><a href="index.html">LOGOUT</a></button>
 
     <div class="container">
         <h2>Name: Vignesh</h2>
@@ -143,25 +143,18 @@
                     <td>HP453td</td>
                     <td>Srivatsan</td>
                     <td>X-ray</td>
-                    <td><button class="btn btn-primary" onclick="viewDocument('{{ doc._id }}')">View</button></td>
+                    <td><button class="btn btn-primary" id="view-button">View</button></td>
                 </tr>
                 <!-- {% endfor %} -->
             </tbody>
         </table>
     </div>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        function viewDocument(docId) {
-
-            fetch('/get_document/' + docId)
-                .then(response => response.text())
-                .then(content => {
-
-                    var newWindow = window.open();
-                    newWindow.document.write(content);
-                })
-                .catch(error => console.error('Error fetching document:', error));
-        }
+        $("#view-button").click(function(e) {
+            e.preventDefault();
+            window.location.href = "/image.html"
+        })
     </script>
 </body>
 
